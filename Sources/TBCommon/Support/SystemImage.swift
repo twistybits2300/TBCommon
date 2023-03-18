@@ -5,8 +5,7 @@ public protocol SystemImage: CustomStringConvertible, CustomDebugStringConvertib
     init?(keyName: String)
 }
 
-@available(iOS 13.0, *)
-@available(macOS 11.0, *)
+@available(macOS 11.0, *, iOS 13.0, *)
 public extension SystemImage where Self: RawRepresentable, Self.RawValue == String  {
     init?(keyName: String) { self.init(rawValue: keyName) }
     var description: String { rawValue }
@@ -14,8 +13,7 @@ public extension SystemImage where Self: RawRepresentable, Self.RawValue == Stri
     var image: Image { Image(systemName: rawValue) }
 }
 
-@available(iOS 13.0, *)
-@available(macOS 11.0, *)
+@available(macOS 11.0, *, iOS 13.0, *)
 public extension Image {
     init(imageKey: SystemImage) {
         self.init(systemName: imageKey.description)

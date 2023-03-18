@@ -18,6 +18,14 @@ final class View_ToolsTests: BaseTestCase {
         let view = EmptyView()
         _ = view.frame(square: Fixture.squareValue)
     }
+
+    /// Coverage tests.
+    func test_coverage() throws {
+        let sut = EmptyView()
+        _ = sut.debug("coverage for debug()")
+        _ = sut.gone(true)
+        _ = sut.gone(false)
+    }
 }
 
 @available(macOS 11.0, *, iOS 14.0, *)

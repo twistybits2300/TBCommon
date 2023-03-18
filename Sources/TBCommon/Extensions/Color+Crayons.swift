@@ -3,6 +3,11 @@ import SwiftUI
 
 @available(iOS 13.0, OSX 10.15, *)
 public extension Color {
+    /// Returns a color randomly selected from this set of crayon colors.
+    static var randomCrayonColor: Color? {
+        allCrayons.randomElement()
+    }
+
     // MARK: Grays
     static let snow = Color.white
     static let mercury = Color(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, opacity: 1)
@@ -58,4 +63,60 @@ public extension Color {
     static let lemon = Color(red: 0.9994240403, green: 0.9855536819, blue: 0, opacity: 1)
     static let tangerine = Color(red: 1, green: 0.5781051517, blue: 0, opacity: 1)
     static let maraschino = Color(red: 1, green: 0.1491314173, blue: 0, opacity: 1)
+}
+
+@available(iOS 13.0, OSX 10.15, *)
+internal extension Color {
+    static var allCrayons: [Color] {
+        [
+            snow,
+            mercury,
+            silver,
+            magnesium,
+            aluminum,
+            nickel,
+            tin,
+            steel,
+            iron,
+            tungsten,
+            lead,
+            licorice,
+            maroon,
+            plum,
+            eggplant,
+            midnight,
+            ocean,
+            teal,
+            moss,
+            clover,
+            fern,
+            asparagus,
+            mocha,
+            cayenne,
+            carnation,
+            bubblegum,
+            lavender,
+            orchid,
+            sky,
+            ice,
+            spindrift,
+            flora,
+            honeydew,
+            banana,
+            cantaloupe,
+            salmon,
+            strawberry,
+            magenta,
+            grape,
+            blueberry,
+            aqua,
+            turquoise,
+            seaFoam,
+            spring,
+            lime,
+            lemon,
+            tangerine,
+            maraschino
+        ]
+    }
 }
