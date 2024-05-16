@@ -7,4 +7,8 @@ public extension URL {
         }
         self = url
     }
+
+    func putOnPasteboard() {
+        absoluteString.putOnPasteboard()
+    }
 }
