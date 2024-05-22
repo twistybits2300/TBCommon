@@ -1,3 +1,4 @@
+#if os(iOS)
 import UIKit
 
 @available(iOS 15, *)
@@ -74,3 +75,4 @@ public extension UIButton {
         NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
     }
 }
+#endif
