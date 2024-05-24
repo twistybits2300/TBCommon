@@ -42,10 +42,14 @@ public final class RectangularButton: UIButton {
         }
         
         var configuration = UIButton.Configuration.filled()
+
         self.tintColor = style.backgroundColor
+        configuration.baseForegroundColor = style.textColor
+
         var container = AttributeContainer()
         container.font = UIFont.preferredFont(forTextStyle: style.textStyle)
         configuration.attributedTitle = AttributedString(buttonTitle, attributes: container)
+
         self.configuration = configuration
     }
 }
@@ -60,6 +64,9 @@ public extension RectangularButton {
         
         /// The dynamic type text style to be used.
         public let textStyle: UIFont.TextStyle
+        
+        /// The color to use for displaying the title text.
+        public let textColor: UIColor
     }
 }
 
@@ -67,7 +74,9 @@ public extension RectangularButton {
 public extension RectangularButton.Style {
     /// A default style for a `RectangularButton`.
     static var defaultStyle: RectangularButton.Style {
-        RectangularButton.Style(backgroundColor: .systemGreen, textStyle: .title3)
+        RectangularButton.Style(backgroundColor: .systemGreen,
+                                textStyle: .title3,
+                                textColor: UIColor.label)
     }
 }
 
