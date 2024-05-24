@@ -3,6 +3,40 @@ import UIKit
 
 @available(iOS 15, *)
 public extension UIButton {
+    /// Utility function for creating a `UIButton` featuring dynamic type
+    /// for the title font.  It uses `UIButton.Configuration` for the button's
+    /// style.
+    /// - Parameters:
+    ///   - title: The button's title.
+    ///   - tintColor: Its `.tintColor`
+    ///   - textStyle: The dynamic type text style to be used.
+    ///   Defaults to `.title3`.
+    ///   - target: The button's action target.
+    ///   - selector: The button's action selector function.
+    /// - Returns: A newly created button.
+    /// 
+    /// If `titleFontSize` is non-`nil` the button's title is set
+    /// using an `AttributedString` via `.attributedTitle`. Otherwise,
+    /// the default font and size is used by setting the given `title`
+    /// to the button's `title`.
+    static func makeDynamicTypeButton(title: String,
+                                      tintColor: UIColor,
+                                      textStyle: UIFont.TextStyle = .title3,
+                                      target: Any?,
+                                      selector: Selector) -> UIButton {
+        var configuration = UIButton.Configuration.filled()
+        var container = AttributeContainer()
+        container.font = UIFont.preferredFont(forTextStyle: textStyle)
+        configuration.attributedTitle = AttributedString(title, attributes: container)
+        
+        let button = UIButton(configuration: configuration)
+        button.useAutoLayout()
+        button.tintColor = tintColor
+        button.addTarget(target, action: selector, for: .touchUpInside)
+
+        return button
+    }
+    
     /// Utility function for creating a `UIButton`. It uses `UIButton.Configuration`
     /// to customize the button.
     /// - Parameters:

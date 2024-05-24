@@ -9,6 +9,12 @@ import os
 final class UIButton_ExtensionsTests: XCTestCase {
     private let fixture = TestFixture()
     
+    /// Validates that `makeDynamicTypeButton()` works as expected.
+    func test_makeDynamicTypeButton() throws {
+        let sut = fixture.makeDynamicTypeSUT()
+        XCTAssertEqual(sut.configuration?.title, Default.title)
+    }
+    
     /// Validates that `makeButton()` uses `title` when `titleFontSize` is `nil`.
     func test_makeButton_nil_titleFontSize() throws {
         let sut = fixture.makeDefaultSUT()
@@ -39,12 +45,23 @@ private enum Default {
     static var title: String { "I am a button" }
     static var tintColor: UIColor { .systemIndigo }
     static var titleFontSize: CGFloat { 60.0 }
+    static var textStyle: UIFont.TextStyle { .largeTitle }
     static var action: UIAction { UIAction { _ in } }
 }
 
 @available(iOS 15, *)
 private struct TestFixture {
     static let testVC = TestViewController()
+    
+    func makeDynamicTypeSUT(title: String = Default.title,
+                            tintColor: UIColor = Default.tintColor,
+                            textStyle: UIFont.TextStyle = Default.textStyle) -> UIButton {
+        UIButton.makeDynamicTypeButton(title: title,
+                                       tintColor: tintColor,
+                                       textStyle: textStyle,
+                                       target: Self.testVC,
+                                       selector: testSelector)
+    }
     
     func makeDefaultSUT(title: String = Default.title,
                         tintColor: UIColor = Default.tintColor) -> UIButton {
