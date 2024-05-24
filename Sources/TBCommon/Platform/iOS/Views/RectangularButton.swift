@@ -76,7 +76,7 @@ public extension RectangularButton.Style {
     static var defaultStyle: RectangularButton.Style {
         RectangularButton.Style(backgroundColor: .systemGreen,
                                 textStyle: .title3,
-                                textColor: UIColor.label)
+                                textColor: .black)
     }
 }
 
