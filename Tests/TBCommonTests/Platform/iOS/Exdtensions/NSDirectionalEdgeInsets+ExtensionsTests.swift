@@ -1,5 +1,6 @@
 #if os(iOS)
 import XCTest
+import UIKit
 import os
 @testable import TBCommon
 
