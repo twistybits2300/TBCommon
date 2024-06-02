@@ -2,18 +2,18 @@ import XCTest
 import os
 @testable import TBCommon
 
-/// Validation of `TextFile`.
-final class TextFileTests: XCTestCase {
+/// Validation of `JsonFile`.
+final class JsonFileTests: XCTestCase {
     /// Validates that `load(from:)` returns `nil` if it can't find the file.
     func testLoadFromFailure() throws {
         let filename = "bogus_filename"
-        XCTAssertNil(try TextFile.load(from: filename))
+        XCTAssertThrowsError(try JsonFile.load(fromFilename: filename))
     }
     
     /// Validates that `load(from:)` works as expected.
     func testLoadFromSuccess() throws {
-        let filename = "files"
-        let contents = try XCTUnwrap(TextFile.load(from: filename, using: .module))
-        XCTAssertFalse(contents.isEmpty)
+        let filename = "f1_seasons"
+        let data = try XCTUnwrap(JsonFile.load(fromFilename: filename, in: .module))
+        XCTAssertFalse(data.isEmpty)
     }
 }
