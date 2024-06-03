@@ -67,6 +67,19 @@ public extension RectangularButton {
         
         /// The color to use for displaying the title text.
         public let textColor: UIColor
+        
+        /// Initialize using the given `backgroundColor`, `textStyle` and `textColor`.
+        /// - Parameters:
+        ///   - backgroundColor: The button's background color.
+        ///   - textStyle: The button's title label font style.
+        ///   - textColor: The buttons title label text color.
+        public init(backgroundColor: UIColor, 
+                    textStyle: UIFont.TextStyle,
+                    textColor: UIColor) {
+            self.backgroundColor = backgroundColor
+            self.textStyle = textStyle
+            self.textColor = textColor
+        }
     }
 }
 
@@ -76,7 +89,7 @@ public extension RectangularButton.Style {
     static var defaultStyle: RectangularButton.Style {
         RectangularButton.Style(backgroundColor: .systemGreen,
                                 textStyle: .title3,
-                                textColor: .black)
+                                textColor: .white)
     }
 }
 
